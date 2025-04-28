@@ -1,0 +1,393 @@
+Fitter report for pld_mbed_etudiant
+Fri Apr 25 17:28:22 2025
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Fitter Summary
+  3. Fitter Settings
+  4. Parallel Compilation
+  5. Pin-Out File
+  6. Fitter Resource Usage Summary
+  7. Input Pins
+  8. Output Pins
+  9. All Package Pins
+ 10. I/O Standard
+ 11. Dedicated Inputs I/O
+ 12. Output Pin Default Load For Reported TCO
+ 13. Fitter Resource Utilization by Entity
+ 14. Control Signals
+ 15. Global & Other Fast Signals
+ 16. Non-Global High Fan-Out Signals
+ 17. Other Routing Usage Summary
+ 18. LAB Macrocells
+ 19. Logic Cell Interconnection
+ 20. Fitter Device Options
+ 21. Fitter Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; Fitter Summary                                                              ;
++---------------------------+-------------------------------------------------+
+; Fitter Status             ; Successful - Fri Apr 25 17:28:22 2025           ;
+; Quartus II 32-bit Version ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name             ; pld_mbed_etudiant                               ;
+; Top-level Entity Name     ; PWM                                             ;
+; Family                    ; MAX7000S                                        ;
+; Device                    ; EPM7064SLC44-10                                 ;
+; Timing Models             ; Final                                           ;
+; Total macrocells          ; 10 / 64 ( 16 % )                                ;
+; Total pins                ; 17 / 36 ( 47 % )                                ;
++---------------------------+-------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; Fitter Settings                                                                                              ;
++----------------------------------------------------------------------------+-----------------+---------------+
+; Option                                                                     ; Setting         ; Default Value ;
++----------------------------------------------------------------------------+-----------------+---------------+
+; Device                                                                     ; EPM7064SLC44-10 ;               ;
+; Use smart compilation                                                      ; Off             ; Off           ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On              ; On            ;
+; Enable compact report table                                                ; Off             ; Off           ;
+; Optimize Multi-Corner Timing                                               ; Off             ; Off           ;
+; Optimize Timing for ECOs                                                   ; Off             ; Off           ;
+; Regenerate full fit report during ECO compiles                             ; Off             ; Off           ;
+; Optimize IOC Register Placement for Timing                                 ; Normal          ; Normal        ;
+; Fitter Initial Placement Seed                                              ; 1               ; 1             ;
+; Slow Slew Rate                                                             ; Off             ; Off           ;
+; Fitter Effort                                                              ; Auto Fit        ; Auto Fit      ;
+; Force Fitter to Avoid Periphery Placement Warnings                         ; Off             ; Off           ;
++----------------------------------------------------------------------------+-----------------+---------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 12     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------+
+; Pin-Out File ;
++--------------+
+The pin-out file can be found in Z:/BUT2/SAE_ROUE/PLD/output_files/pld_mbed_etudiant.pin.
+
+
++-------------------------------------------------+
+; Fitter Resource Usage Summary                   ;
++------------------------------+------------------+
+; Resource                     ; Usage            ;
++------------------------------+------------------+
+; Logic cells                  ; 10 / 64 ( 16 % ) ;
+; Registers                    ; 9 / 64 ( 14 % )  ;
+; Number of pterms used        ; 15               ;
+; I/O pins                     ; 17 / 36 ( 47 % ) ;
+;     -- Clock pins            ; 1 / 2 ( 50 % )   ;
+;     -- Dedicated input pins  ; 0 / 2 ( 0 % )    ;
+;                              ;                  ;
+; Global signals               ; 1                ;
+; Shareable expanders          ; 0 / 64 ( 0 % )   ;
+; Parallel expanders           ; 0 / 60 ( 0 % )   ;
+; Cells using turbo bit        ; 10 / 64 ( 16 % ) ;
+; Maximum fan-out              ; 9                ;
+; Highest non-global fan-out   ; 8                ;
+; Total fan-out                ; 70               ;
+; Average fan-out              ; 2.59             ;
++------------------------------+------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Input Pins                                                                                                                                       ;
++------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; Name       ; Pin # ; I/O Bank ; LAB ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; I/O Standard ; Location assigned by ;
++------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+; H_2_5_MHZ  ; 43    ; --       ; --  ; 9                     ; 0                  ; yes    ; no             ; TTL          ; Fitter               ;
+; REF_PWM[0] ; 41    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[1] ; 4     ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[2] ; 40    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[3] ; 31    ; --       ; 3   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[4] ; 5     ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[5] ; 14    ; --       ; 2   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[6] ; 6     ; --       ; 1   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[7] ; 39    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; REF_PWM[8] ; 29    ; --       ; 3   ; 0                     ; 0                  ; no     ; no             ; TTL          ; Fitter               ;
+; VALID_PWM  ; 33    ; --       ; 4   ; 0                     ; 0                  ; no     ; no             ; TTL          ; User                 ;
++------------+-------+----------+-----+-----------------------+--------------------+--------+----------------+--------------+----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Output Pins                                                                                                                                                                                 ;
++---------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; Name    ; Pin # ; I/O Bank ; LAB ; Output Register ; Slow Slew Rate ; Open Drain ; TRI Primitive ; I/O Standard ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
++---------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+; H_10KHZ ; 12    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
+; PWM_OUT ; 11    ; --       ; 1   ; no              ; no             ; no         ; no            ; TTL          ; Fitter               ; 10 pF ; -                    ; -                   ;
++---------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                      ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage ; Dir.   ; I/O Standard ; Voltage ; User Assignment ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+; 1        ; 0          ; --       ; GND+           ;        ;              ;         ;                 ;
+; 2        ; 1          ; --       ; GND+           ;        ;              ;         ;                 ;
+; 3        ; 2          ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 4        ; 3          ; --       ; REF_PWM[1]     ; input  ; TTL          ;         ; N               ;
+; 5        ; 4          ; --       ; REF_PWM[4]     ; input  ; TTL          ;         ; N               ;
+; 6        ; 5          ; --       ; REF_PWM[6]     ; input  ; TTL          ;         ; N               ;
+; 7        ; 6          ; --       ; TDI            ; input  ; TTL          ;         ; N               ;
+; 8        ; 7          ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 9        ; 8          ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 10       ; 9          ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 11       ; 10         ; --       ; PWM_OUT        ; output ; TTL          ;         ; N               ;
+; 12       ; 11         ; --       ; H_10KHZ        ; output ; TTL          ;         ; N               ;
+; 13       ; 12         ; --       ; TMS            ; input  ; TTL          ;         ; N               ;
+; 14       ; 13         ; --       ; REF_PWM[5]     ; input  ; TTL          ;         ; N               ;
+; 15       ; 14         ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 16       ; 15         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 17       ; 16         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 18       ; 17         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 19       ; 18         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 20       ; 19         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 21       ; 20         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 22       ; 21         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 23       ; 22         ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 24       ; 23         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 25       ; 24         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 26       ; 25         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 27       ; 26         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 28       ; 27         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 29       ; 28         ; --       ; REF_PWM[8]     ; input  ; TTL          ;         ; N               ;
+; 30       ; 29         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 31       ; 30         ; --       ; REF_PWM[3]     ; input  ; TTL          ;         ; N               ;
+; 32       ; 31         ; --       ; TCK            ; input  ; TTL          ;         ; N               ;
+; 33       ; 32         ; --       ; VALID_PWM      ; input  ; TTL          ;         ; Y               ;
+; 34       ; 33         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 35       ; 34         ; --       ; VCC            ; power  ;              ;         ;                 ;
+; 36       ; 35         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 37       ; 36         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 38       ; 37         ; --       ; TDO            ; output ; TTL          ;         ; N               ;
+; 39       ; 38         ; --       ; REF_PWM[7]     ; input  ; TTL          ;         ; N               ;
+; 40       ; 39         ; --       ; REF_PWM[2]     ; input  ; TTL          ;         ; N               ;
+; 41       ; 40         ; --       ; REF_PWM[0]     ; input  ; TTL          ;         ; N               ;
+; 42       ; 41         ; --       ; GND            ; gnd    ;              ;         ;                 ;
+; 43       ; 42         ; --       ; H_2_5_MHZ      ; input  ; TTL          ;         ; N               ;
+; 44       ; 43         ; --       ; GND+           ;        ;              ;         ;                 ;
++----------+------------+----------+----------------+--------+--------------+---------+-----------------+
+Note: Pin directions (input, output or bidir) are based on device operating in user mode.
+
+
++--------------------------------------------------------------------------------------------------+
+; I/O Standard                                                                                     ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+; I/O Standard ; Input Vref ; Dedicated Input Pins ; Pins in I/O Bank1 ; Pins in I/O Bank2 ; Total ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+; TTL          ; -          ; 1                    ; 0                 ; 0                 ; 1     ;
++--------------+------------+----------------------+-------------------+-------------------+-------+
+
+
++-------------------------------------------------------------------------+
+; Dedicated Inputs I/O                                                    ;
++-----------+-------+-------+-------+--------------+------------+---------+
+; Name      ; Pin # ; Type  ; VCCIO ; I/O Standard ; Input Vref ; Current ;
++-----------+-------+-------+-------+--------------+------------+---------+
+; H_2_5_MHZ ; 43    ; Input ; --    ; TTL          ; -          ; 0 mA    ;
++-----------+-------+-------+-------+--------------+------------+---------+
+
+
++-----------------------------------------------+
+; Output Pin Default Load For Reported TCO      ;
++--------------+-------+------------------------+
+; I/O Standard ; Load  ; Termination Resistance ;
++--------------+-------+------------------------+
+; TTL          ; 10 pF ; Not Available          ;
++--------------+-------+------------------------+
+Note: User assignments will override these defaults. The user specified values are listed in the Output Pins and Bidir Pins tables.
+
+
++-------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                               ;
++----------------------------+------------+------+---------------------+--------------+
+; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+------------+------+---------------------+--------------+
+; |PWM                       ; 10         ; 17   ; |PWM                ; work         ;
++----------------------------+------------+------+---------------------+--------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Control Signals                                                                           ;
++-----------+----------+---------+-------+--------+----------------------+------------------+
+; Name      ; Location ; Fan-Out ; Usage ; Global ; Global Resource Used ; Global Line Name ;
++-----------+----------+---------+-------+--------+----------------------+------------------+
+; H_2_5_MHZ ; PIN_43   ; 9       ; Clock ; yes    ; On                   ; --               ;
++-----------+----------+---------+-------+--------+----------------------+------------------+
+
+
++--------------------------------------------------------------------------+
+; Global & Other Fast Signals                                              ;
++-----------+----------+---------+----------------------+------------------+
+; Name      ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ;
++-----------+----------+---------+----------------------+------------------+
+; H_2_5_MHZ ; PIN_43   ; 9       ; On                   ; --               ;
++-----------+----------+---------+----------------------+------------------+
+
+
++---------------------------------+
+; Non-Global High Fan-Out Signals ;
++--------------+------------------+
+; Name         ; Fan-Out          ;
++--------------+------------------+
+; CPT[2]       ; 8                ;
+; CPT[1]       ; 8                ;
+; CPT[0]       ; 8                ;
+; CPT[7]       ; 7                ;
+; CPT[6]       ; 7                ;
+; CPT[5]       ; 7                ;
+; CPT[4]       ; 7                ;
+; CPT[3]       ; 7                ;
+; ~GND~0       ; 1                ;
+; H_10KHZ~reg0 ; 1                ;
++--------------+------------------+
+
+
++-----------------------------------------------+
+; Other Routing Usage Summary                   ;
++-----------------------------+-----------------+
+; Other Routing Resource Type ; Usage           ;
++-----------------------------+-----------------+
+; Output enables              ; 0 / 6 ( 0 % )   ;
+; PIA buffers                 ; 8 / 144 ( 6 % ) ;
++-----------------------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; LAB Macrocells                                                       ;
++----------------------------------------+-----------------------------+
+; Number of Macrocells  (Average = 2.50) ; Number of LABs  (Total = 1) ;
++----------------------------------------+-----------------------------+
+; 0                                      ; 3                           ;
+; 1                                      ; 0                           ;
+; 2                                      ; 0                           ;
+; 3                                      ; 0                           ;
+; 4                                      ; 0                           ;
+; 5                                      ; 0                           ;
+; 6                                      ; 0                           ;
+; 7                                      ; 0                           ;
+; 8                                      ; 0                           ;
+; 9                                      ; 0                           ;
+; 10                                     ; 1                           ;
++----------------------------------------+-----------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Logic Cell Interconnection                                                                                                                                          ;
++-----+------------+---------------------------------------------------------------------------+----------------------------------------------------------------------+
+; LAB ; Logic Cell ; Input                                                                     ; Output                                                               ;
++-----+------------+---------------------------------------------------------------------------+----------------------------------------------------------------------+
+;  A  ; LC2        ; H_2_5_MHZ                                                                 ; CPT[1], CPT[2], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0 ;
+;  A  ; LC4        ; H_2_5_MHZ, CPT[7], CPT[6], CPT[5], CPT[4], CPT[3], CPT[2], CPT[1], CPT[0] ; CPT[1], CPT[2], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0 ;
+;  A  ; LC5        ; H_2_5_MHZ, CPT[1], CPT[0], CPT[2]                                         ; CPT[1], CPT[2], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0 ;
+;  A  ; LC6        ; H_2_5_MHZ, CPT[7], CPT[6], CPT[5], CPT[4], CPT[2], CPT[1], CPT[3], CPT[0] ; CPT[1], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0         ;
+;  A  ; LC7        ; H_2_5_MHZ, CPT[7], CPT[6], CPT[5], CPT[2], CPT[1], CPT[3], CPT[4], CPT[0] ; CPT[1], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0         ;
+;  A  ; LC8        ; H_2_5_MHZ, CPT[7], CPT[6], CPT[2], CPT[1], CPT[4], CPT[3], CPT[5], CPT[0] ; CPT[1], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0         ;
+;  A  ; LC9        ; H_2_5_MHZ, CPT[7], CPT[2], CPT[1], CPT[5], CPT[4], CPT[3], CPT[6], CPT[0] ; CPT[1], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0         ;
+;  A  ; LC10       ; H_2_5_MHZ, CPT[6], CPT[5], CPT[4], CPT[3], CPT[2], CPT[1], CPT[7], CPT[0] ; CPT[1], CPT[3], CPT[4], CPT[5], CPT[6], CPT[7], H_10KHZ~reg0         ;
+;  A  ; LC1        ; H_2_5_MHZ, CPT[7], CPT[6], CPT[5], CPT[4], CPT[3], CPT[2], CPT[1], CPT[0] ; H_10KHZ                                                              ;
+;  A  ; LC3        ;                                                                           ; PWM_OUT                                                              ;
++-----+------------+---------------------------------------------------------------------------+----------------------------------------------------------------------+
+
+
++---------------------------------------------------------------+
+; Fitter Device Options                                         ;
++----------------------------------------------+----------------+
+; Option                                       ; Setting        ;
++----------------------------------------------+----------------+
+; Enable user-supplied start-up clock (CLKUSR) ; Off            ;
+; Enable device-wide reset (DEV_CLRn)          ; Off            ;
+; Enable device-wide output enable (DEV_OE)    ; Off            ;
+; Enable INIT_DONE output                      ; Off            ;
+; Configuration scheme                         ; Passive Serial ;
+; Security bit                                 ; Off            ;
+; Base pin-out file on sameframe device        ; Off            ;
++----------------------------------------------+----------------+
+
+
++-----------------+
+; Fitter Messages ;
++-----------------+
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (119006): Selected device EPM7064SLC44-10 for design "pld_mbed_etudiant"
+Warning (15705): Ignored locations or region assignments to the following nodes
+    Warning (15706): Node "AD0" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD1" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD2" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD3" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD4" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD5" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD6" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD7" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[0]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[1]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[2]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[3]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[4]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[5]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[6]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "AD[7]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "BRAKE" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "DIRECTION" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "FLTA" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "HALLA" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "HALLB" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "HALLC" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "H_2_5MHZ" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "Over_current" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PCS6" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PCS[6]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PWMAH" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PWMAL" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PWMBH" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PWMBL" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PWMCH" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "PWMCL" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "RD_WRn" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "TOP_HALL" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "WR" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "timer1" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "timer[1]" is assigned to location or region, but does not exist in design
+Info: Quartus II 32-bit Fitter was successful. 0 errors, 39 warnings
+    Info: Peak virtual memory: 360 megabytes
+    Info: Processing ended: Fri Apr 25 17:28:22 2025
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

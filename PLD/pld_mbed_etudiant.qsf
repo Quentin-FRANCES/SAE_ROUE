@@ -1,0 +1,104 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2013 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II 64-Bit
+# Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+# Date created = 17:00:56  September 07, 2015
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		pld_mbed_etudiant_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY MAX7000S
+set_global_assignment -name DEVICE "EPM7064SLC44-10"
+set_global_assignment -name TOP_LEVEL_ENTITY PWM
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:00:56  SEPTEMBER 07, 2015"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name MAX7000_DEVICE_IO_STANDARD TTL
+set_location_assignment PIN_39 -to HALLA
+set_location_assignment PIN_41 -to HALLC
+set_location_assignment PIN_36 -to DIRECTION
+set_location_assignment PIN_37 -to Over_current
+set_location_assignment PIN_33 -to valid_pwm
+set_location_assignment PIN_43 -to H_2_5MHZ
+set_location_assignment PIN_40 -to HALLB
+set_location_assignment PIN_9 -to PWMCL
+set_location_assignment PIN_8 -to PWMCH
+set_location_assignment PIN_12 -to PWMBL
+set_location_assignment PIN_11 -to PWMBH
+set_location_assignment PIN_14 -to PWMAH
+set_location_assignment PIN_34 -to timer1
+set_location_assignment PIN_34 -to timer[1]
+set_location_assignment PIN_5 -to BRAKE
+set_location_assignment PIN_16 -to PWMAL
+set_location_assignment PIN_6 -to FLTA
+set_location_assignment PIN_17 -to AD7
+set_location_assignment PIN_17 -to AD[7]
+set_location_assignment PIN_18 -to AD6
+set_location_assignment PIN_18 -to AD[6]
+set_location_assignment PIN_19 -to AD5
+set_location_assignment PIN_19 -to AD[5]
+set_location_assignment PIN_20 -to AD4
+set_location_assignment PIN_20 -to AD[4]
+set_location_assignment PIN_21 -to AD3
+set_location_assignment PIN_21 -to AD[3]
+set_location_assignment PIN_24 -to AD2
+set_location_assignment PIN_24 -to AD[2]
+set_location_assignment PIN_25 -to AD1
+set_location_assignment PIN_25 -to AD[1]
+set_location_assignment PIN_26 -to AD0
+set_location_assignment PIN_26 -to AD[0]
+set_location_assignment PIN_27 -to WR
+set_location_assignment PIN_28 -to PCS6
+set_location_assignment PIN_28 -to PCS[6]
+set_location_assignment PIN_29 -to RD_WRn
+set_location_assignment PIN_31 -to TOP_HALL
+set_global_assignment -name DEVICE_FILTER_PACKAGE PLCC
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 44
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 10
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name BDF_FILE FILTRE.bdf
+set_global_assignment -name VHDL_FILE bloc_io_mbed.vhd
+set_global_assignment -name BDF_FILE matrix_scooter_pwm_mbed_etudiant.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE collecteur_num.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE filtre.vwf
+set_global_assignment -name QIP_FILE ref_pwm.qip
+set_global_assignment -name VHDL_FILE collecteur_num.vhd
+set_global_assignment -name VHDL_FILE PWM.vhd
+set_global_assignment -name VECTOR_WAVEFORM_FILE PWM.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "Z:/BUT2/SAE_ROUE/PLD/PWM.vwf"

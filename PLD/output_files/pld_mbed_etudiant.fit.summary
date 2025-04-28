@@ -1,0 +1,9 @@
+Fitter Status : Successful - Fri Apr 25 17:28:22 2025
+Quartus II 32-bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : pld_mbed_etudiant
+Top-level Entity Name : PWM
+Family : MAX7000S
+Device : EPM7064SLC44-10
+Timing Models : Final
+Total macrocells : 10 / 64 ( 16 % )
+Total pins : 17 / 36 ( 47 % )
