@@ -2,36 +2,45 @@
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module PWM
+# -- Compiling module filtre_hall
 # 
 # Top level modules:
-# 	PWM
+# 	filtre_hall
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module PWM_vlg_sample_tst
-# -- Compiling module PWM_vlg_check_tst
-# -- Compiling module PWM_vlg_vec_tst
+# -- Compiling module filtre_hall_vlg_sample_tst
+# -- Compiling module filtre_hall_vlg_check_tst
+# -- Compiling module filtre_hall_vlg_vec_tst
 # 
 # Top level modules:
-# 	PWM_vlg_vec_tst
-# vsim -L max7000s_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -t 1ps -novopt work.PWM_vlg_vec_tst 
-# Loading work.PWM_vlg_vec_tst
-# Loading work.PWM
+# 	filtre_hall_vlg_vec_tst
+# vsim -L max7000s_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate -c -t 1ps -novopt work.filtre_hall_vlg_vec_tst 
+# Loading work.filtre_hall_vlg_vec_tst
+# Loading work.filtre_hall
+# Loading max7000s_ver.max_io
+# Loading max7000s_ver.max_asynch_io
 # Loading max7000s_ver.max_mcell
 # Loading max7000s_ver.max_asynch_mcell
 # Loading max7000s_ver.max_mcell_register
-# Loading max7000s_ver.max_io
-# Loading max7000s_ver.max_asynch_io
-# Loading work.PWM_vlg_sample_tst
-# Loading work.PWM_vlg_check_tst
+# Loading work.filtre_hall_vlg_sample_tst
+# Loading work.filtre_hall_vlg_check_tst
 # GetModuleFileName: Le module spécifié est introuvable.
 # 
 # 
 # GetModuleFileName: Le module spécifié est introuvable.
 # 
 # 
-# ERROR! Vector Mismatch for output port H_10KHZ :: @time = 1250000.000 ps
+# ERROR! Vector Mismatch for output port valid_hall :: @time = 1000000.000 ps
 #      Expected value = 0
 #      Real value = 1
-#           1 mismatched vectors : Simulation failed !
-# ** Note: $finish    : pld_mbed_etudiant.vt(158)
-#    Time: 10 us  Iteration: 0  Instance: /PWM_vlg_vec_tst/tb_out
+# ERROR! Vector Mismatch for output port hall_filtre[0] :: @time = 26000000.000 ps
+#      Expected value = 000
+#      Real value = 001
+# ERROR! Vector Mismatch for output port hall_filtre[1] :: @time = 46000000.000 ps
+#      Expected value = 000
+#      Real value = 010
+# ERROR! Vector Mismatch for output port hall_filtre[2] :: @time = 86000000.000 ps
+#      Expected value = 000
+#      Real value = 100
+#           4 mismatched vectors : Simulation failed !
+# ** Note: $finish    : pld_mbed_etudiant.vt(228)
+#    Time: 100 us  Iteration: 0  Instance: /filtre_hall_vlg_vec_tst/tb_out

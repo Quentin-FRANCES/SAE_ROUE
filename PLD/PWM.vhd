@@ -4,26 +4,29 @@ use IEEE.std_logic_1164.all;
 ENTITY PWM IS
 PORT(
 	H_2_5_MHZ, VALID_PWM : IN STD_LOGIC;
-	REF_PWM : IN INTEGER RANGE 0 to 256;
-	H_10KHZ, PWM_OUT : OUT STD_LOGIC
+	REF_PWM : IN INTEGER RANGE 0 to 255; --entree rapport cyclique
+	H_10KHZ : BUFFER STD_LOGIC;
+	PWM_OUT : OUT STD_LOGIC
 	);
 END PWM ;
 
 ARCHITECTURE archi OF PWM IS
-	SIGNAL CPT : INTEGER RANGE 0 TO 250;
+	SIGNAL CPT_CLK : INTEGER RANGE 0 TO 255;
 BEGIN
+	
 	PROCESS(H_2_5_MHZ)
 	BEGIN
 		IF(H_2_5_MHZ'EVENT AND H_2_5_MHZ='1') THEn
-			IF CPT = 249 THEN 
-				CPT <= 0;
+			IF CPT_CLK = 255 THEN 
+				CPT_CLK <= 0;
 				H_10KHZ <= '1';
 			ELSE
-				CPT <= CPT + 1;
+				CPT_CLK <= CPT_CLK + 1;
 				H_10KHZ <= '0';
 			END IF;
 		END IF;
 	END PROCESS;
+	
+	PWM_OUT <= '1' WHEN((REF_PWM > CPT_CLK) AND VALID_PWM = '1') ELSE '0';
+	
 END archi;
-
---Faire PWM OUT en fonction de la clock un 10KHZ (?)

@@ -2,15 +2,27 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Setup 'H_2_5_MHZ'
+Type  : Setup 'PWM:inst4|H_10KHZ'
+Slack : -9.800
+TNS   : -147.200
+
+Type  : Setup 'H_2_5MHZ'
 Slack : -9.000
 TNS   : -81.000
 
-Type  : Hold 'H_2_5_MHZ'
+Type  : Hold 'H_2_5MHZ'
 Slack : 5.000
 TNS   : 0.000
 
-Type  : Minimum Pulse Width 'H_2_5_MHZ'
+Type  : Hold 'PWM:inst4|H_10KHZ'
+Slack : 5.000
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'PWM:inst4|H_10KHZ'
+Slack : -3.500
+TNS   : -133.000
+
+Type  : Minimum Pulse Width 'H_2_5MHZ'
 Slack : -3.500
 TNS   : -63.000
 

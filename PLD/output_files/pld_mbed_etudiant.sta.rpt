@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for pld_mbed_etudiant
-Fri Apr 25 17:28:26 2025
+Tue Apr 29 16:53:18 2025
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,17 +16,24 @@ Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. Recovery Summary
   9. Removal Summary
  10. Minimum Pulse Width Summary
- 11. Setup: 'H_2_5_MHZ'
- 12. Hold: 'H_2_5_MHZ'
- 13. Minimum Pulse Width: 'H_2_5_MHZ'
- 14. Clock to Output Times
- 15. Minimum Clock to Output Times
- 16. Setup Transfers
- 17. Hold Transfers
- 18. Report TCCS
- 19. Report RSKM
- 20. Unconstrained Paths
- 21. TimeQuest Timing Analyzer Messages
+ 11. Setup: 'PWM:inst4|H_10KHZ'
+ 12. Setup: 'H_2_5MHZ'
+ 13. Hold: 'H_2_5MHZ'
+ 14. Hold: 'PWM:inst4|H_10KHZ'
+ 15. Minimum Pulse Width: 'PWM:inst4|H_10KHZ'
+ 16. Minimum Pulse Width: 'H_2_5MHZ'
+ 17. Setup Times
+ 18. Hold Times
+ 19. Clock to Output Times
+ 20. Minimum Clock to Output Times
+ 21. Propagation Delay
+ 22. Minimum Propagation Delay
+ 23. Setup Transfers
+ 24. Hold Transfers
+ 25. Report TCCS
+ 26. Report RSKM
+ 27. Unconstrained Paths
+ 28. TimeQuest Timing Analyzer Messages
 
 
 
@@ -73,41 +80,45 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                                ;
-+------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
-; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets       ;
-+------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
-; H_2_5_MHZ  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { H_2_5_MHZ } ;
-+------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                               ;
++-------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------+
+; Clock Name        ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets               ;
++-------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------+
+; H_2_5MHZ          ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { H_2_5MHZ }          ;
+; PWM:inst4|H_10KHZ ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { PWM:inst4|H_10KHZ } ;
++-------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------+
 
 
-+-------------------------------------------------+
-; Fmax Summary                                    ;
-+-----------+-----------------+------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
-+-----------+-----------------+------------+------+
-; 100.0 MHz ; 100.0 MHz       ; H_2_5_MHZ  ;      ;
-+-----------+-----------------+------------+------+
++--------------------------------------------------------+
+; Fmax Summary                                           ;
++-----------+-----------------+-------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name        ; Note ;
++-----------+-----------------+-------------------+------+
+; 92.59 MHz ; 92.59 MHz       ; PWM:inst4|H_10KHZ ;      ;
+; 100.0 MHz ; 100.0 MHz       ; H_2_5MHZ          ;      ;
++-----------+-----------------+-------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+------------------------------------+
-; Setup Summary                      ;
-+-----------+--------+---------------+
-; Clock     ; Slack  ; End Point TNS ;
-+-----------+--------+---------------+
-; H_2_5_MHZ ; -9.000 ; -81.000       ;
-+-----------+--------+---------------+
++--------------------------------------------+
+; Setup Summary                              ;
++-------------------+--------+---------------+
+; Clock             ; Slack  ; End Point TNS ;
++-------------------+--------+---------------+
+; PWM:inst4|H_10KHZ ; -9.800 ; -147.200      ;
+; H_2_5MHZ          ; -9.000 ; -81.000       ;
++-------------------+--------+---------------+
 
 
-+-----------------------------------+
-; Hold Summary                      ;
-+-----------+-------+---------------+
-; Clock     ; Slack ; End Point TNS ;
-+-----------+-------+---------------+
-; H_2_5_MHZ ; 5.000 ; 0.000         ;
-+-----------+-------+---------------+
++-------------------------------------------+
+; Hold Summary                              ;
++-------------------+-------+---------------+
+; Clock             ; Slack ; End Point TNS ;
++-------------------+-------+---------------+
+; H_2_5MHZ          ; 5.000 ; 0.000         ;
+; PWM:inst4|H_10KHZ ; 5.000 ; 0.000         ;
++-------------------+-------+---------------+
 
 
 --------------------
@@ -122,232 +133,545 @@ No paths to report.
 No paths to report.
 
 
-+------------------------------------+
-; Minimum Pulse Width Summary        ;
-+-----------+--------+---------------+
-; Clock     ; Slack  ; End Point TNS ;
-+-----------+--------+---------------+
-; H_2_5_MHZ ; -3.500 ; -63.000       ;
-+-----------+--------+---------------+
++--------------------------------------------+
+; Minimum Pulse Width Summary                ;
++-------------------+--------+---------------+
+; Clock             ; Slack  ; End Point TNS ;
++-------------------+--------+---------------+
+; PWM:inst4|H_10KHZ ; -3.500 ; -133.000      ;
+; H_2_5MHZ          ; -3.500 ; -63.000       ;
++-------------------+--------+---------------+
 
 
-+---------------------------------------------------------------------------------------------------------+
-; Setup: 'H_2_5_MHZ'                                                                                      ;
-+--------+-----------+--------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-----------+--------------+--------------+-------------+--------------+------------+------------+
-; -9.000 ; CPT[0]    ; CPT[0]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[2]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[2]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[2]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[7]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[6]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[5]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[4]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[3]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[2]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[1]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-; -9.000 ; CPT[0]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 1.000        ; 0.000      ; 8.000      ;
-+--------+-----------+--------------+--------------+-------------+--------------+------------+------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'PWM:inst4|H_10KHZ'                                                                                                                                    ;
++--------+----------------------------------+----------------------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack  ; From Node                        ; To Node                          ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------+----------------------------------+-------------------+-------------------+--------------+------------+------------+
+; -9.800 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|hall_filtre[0] ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|hall_filtre[1] ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|hall_filtre[2] ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.800 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.800      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; collecteur_num:inst3|Command[5]  ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; collecteur_num:inst3|Command[4]  ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; collecteur_num:inst3|Command[3]  ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; collecteur_num:inst3|Command[2]  ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; collecteur_num:inst3|Command[1]  ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; collecteur_num:inst3|Command[0]  ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|N_3[2]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|N_3[1]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|N_3[0]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|N_2[2]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|N_2[1]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|N_2[0]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 1.000        ; 0.000      ; 8.000      ;
++--------+----------------------------------+----------------------------------+-------------------+-------------------+--------------+------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Hold: 'H_2_5_MHZ'                                                                                      ;
-+-------+-----------+--------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node ; To Node      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-----------+--------------+--------------+-------------+--------------+------------+------------+
-; 5.000 ; CPT[0]    ; CPT[0]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[2]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[2]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[2]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[3]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[4]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[5]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[6]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[7]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; CPT[1]       ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[7]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[6]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[5]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[4]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[3]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[2]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[1]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-; 5.000 ; CPT[0]    ; H_10KHZ~reg0 ; H_2_5_MHZ    ; H_2_5_MHZ   ; 0.000        ; 0.000      ; 8.000      ;
-+-------+-----------+--------------+--------------+-------------+--------------+------------+------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'H_2_5MHZ'                                                                                                                                                        ;
++--------+---------------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                   ; To Node                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
+; -9.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 1.000        ; 0.000      ; 8.000      ;
++--------+---------------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Minimum Pulse Width: 'H_2_5_MHZ'                                                                       ;
-+--------+--------------+----------------+------------------+-----------+------------+-------------------+
-; Slack  ; Actual Width ; Required Width ; Type             ; Clock     ; Clock Edge ; Target            ;
-+--------+--------------+----------------+------------------+-----------+------------+-------------------+
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[0]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[0]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[1]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[1]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[2]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[2]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[3]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[3]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[4]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[4]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[5]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[5]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[6]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[6]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[7]            ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[7]            ;
-; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; H_10KHZ~reg0      ;
-; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; H_10KHZ~reg0      ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[0]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[0]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[1]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[1]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[2]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[2]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[3]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[3]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[4]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[4]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[5]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[5]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[6]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[6]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; CPT[7]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; CPT[7]|clk        ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; H_10KHZ~reg0|clk  ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; H_10KHZ~reg0|clk  ;
-; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5_MHZ ; Rise       ; H_2_5_MHZ|dataout ;
-; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5_MHZ ; Rise       ; H_2_5_MHZ|dataout ;
-+--------+--------------+----------------+------------------+-----------+------------+-------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'H_2_5MHZ'                                                                                                                                                        ;
++-------+---------------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                   ; To Node                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ; PWM:inst4|H_10KHZ                           ; H_2_5MHZ     ; H_2_5MHZ    ; 0.000        ; 0.000      ; 8.000      ;
++-------+---------------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+-----------------------------------------------------------------------+
-; Clock to Output Times                                                 ;
-+-----------+------------+-------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+-------+------------+-----------------+
-; H_10KHZ   ; H_2_5_MHZ  ; 5.000 ; 5.000 ; Rise       ; H_2_5_MHZ       ;
-+-----------+------------+-------+-------+------------+-----------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'PWM:inst4|H_10KHZ'                                                                                                                                    ;
++-------+----------------------------------+----------------------------------+-------------------+-------------------+--------------+------------+------------+
+; Slack ; From Node                        ; To Node                          ; Launch Clock      ; Latch Clock       ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------+----------------------------------+-------------------+-------------------+--------------+------------+------------+
+; 5.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; collecteur_num:inst3|Command[5]  ; collecteur_num:inst3|Command[5]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; collecteur_num:inst3|Command[4]  ; collecteur_num:inst3|Command[4]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; collecteur_num:inst3|Command[3]  ; collecteur_num:inst3|Command[3]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[1] ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; collecteur_num:inst3|Command[2]  ; collecteur_num:inst3|Command[2]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; collecteur_num:inst3|Command[1]  ; collecteur_num:inst3|Command[1]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[2] ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[0] ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|valid_hall     ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; collecteur_num:inst3|Command[0]  ; collecteur_num:inst3|Command[0]  ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[0] ; filtre_hall:inst5|hall_filtre[0] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[1] ; filtre_hall:inst5|hall_filtre[1] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|hall_filtre[2] ; filtre_hall:inst5|hall_filtre[2] ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[0]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[1]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_3[2]         ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|valid_hall     ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[2]         ; filtre_hall:inst5|N_3[2]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[1]         ; filtre_hall:inst5|N_3[1]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N_2[0]         ; filtre_hall:inst5|N_3[0]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[2]           ; filtre_hall:inst5|N_2[2]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[1]           ; filtre_hall:inst5|N_2[1]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
+; 5.000 ; filtre_hall:inst5|N[0]           ; filtre_hall:inst5|N_2[0]         ; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 0.000        ; 0.000      ; 8.000      ;
++-------+----------------------------------+----------------------------------+-------------------+-------------------+--------------+------------+------------+
 
 
-+-----------------------------------------------------------------------+
-; Minimum Clock to Output Times                                         ;
-+-----------+------------+-------+-------+------------+-----------------+
-; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
-+-----------+------------+-------+-------+------------+-----------------+
-; H_10KHZ   ; H_2_5_MHZ  ; 5.000 ; 5.000 ; Rise       ; H_2_5_MHZ       ;
-+-----------+------------+-------+-------+------------+-----------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'PWM:inst4|H_10KHZ'                                                                                      ;
++--------+--------------+----------------+------------------+-------------------+------------+----------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock             ; Clock Edge ; Target                           ;
++--------+--------------+----------------+------------------+-------------------+------------+----------------------------------+
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[0]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[0]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[1]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[1]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[2]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[2]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[3]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[3]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[4]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[4]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[5]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; collecteur_num:inst3|Command[5]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N[0]           ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N[0]           ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N[1]           ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N[1]           ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N[2]           ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N[2]           ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_2[0]         ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_2[0]         ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_2[1]         ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_2[1]         ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_2[2]         ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_2[2]         ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_3[0]         ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_3[0]         ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_3[1]         ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_3[1]         ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_3[2]         ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|N_3[2]         ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|hall_filtre[0] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|hall_filtre[0] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|hall_filtre[1] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|hall_filtre[1] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|hall_filtre[2] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|hall_filtre[2] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|valid_hall     ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; filtre_hall:inst5|valid_hall     ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[0]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[0]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[1]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[1]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[2]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[2]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[3]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[3]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[4]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[4]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[5]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst3|Command[5]|[4]             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst4|H_10KHZ|dataout            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst4|H_10KHZ|dataout            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N[0]|[1]                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N[0]|[1]                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N[1]|[1]                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N[1]|[1]                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N[2]|[1]                   ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N[2]|[1]                   ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_2[0]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_2[0]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_2[1]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_2[1]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_2[2]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_2[2]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_3[0]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_3[0]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_3[1]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_3[1]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_3[2]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|N_3[2]|[1]                 ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|hall_filtre[0]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|hall_filtre[0]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|hall_filtre[1]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|hall_filtre[1]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|hall_filtre[2]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|hall_filtre[2]|[10]        ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PWM:inst4|H_10KHZ ; Rise       ; inst5|valid_hall|[9]             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PWM:inst4|H_10KHZ ; Rise       ; inst5|valid_hall|[9]             ;
++--------+--------------+----------------+------------------+-------------------+------------+----------------------------------+
 
 
-+--------------------------------------------------------------------+
-; Setup Transfers                                                    ;
-+------------+-----------+----------+----------+----------+----------+
-; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------+-----------+----------+----------+----------+----------+
-; H_2_5_MHZ  ; H_2_5_MHZ ; 91       ; 0        ; 0        ; 0        ;
-+------------+-----------+----------+----------+----------+----------+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'H_2_5MHZ'                                                                                                 ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                                      ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------------------------+
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|H_10KHZ                           ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|H_10KHZ                           ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[0] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[1] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[2] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[3] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[4] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[5] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[6] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; PWM:inst4|lpm_counter:CPT_CLK_rtl_0|dffs[7] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; H_2_5MHZ|dataout                            ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; H_2_5MHZ|dataout                            ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[0]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[0]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[1]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[1]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[2]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[2]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[3]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[3]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[4]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[4]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[5]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[5]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[6]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[6]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[7]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|CPT_CLK_rtl_0|dffs[7]|clk             ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; H_2_5MHZ ; Rise       ; inst4|H_10KHZ|clk                           ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; H_2_5MHZ ; Rise       ; inst4|H_10KHZ|clk                           ;
++--------+--------------+----------------+------------------+----------+------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Setup Times                                                                    ;
++-----------+-------------------+-------+-------+------------+-------------------+
+; Data Port ; Clock Port        ; Rise  ; Fall  ; Clock Edge ; Clock Reference   ;
++-----------+-------------------+-------+-------+------------+-------------------+
+; HALLA     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; HALLB     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; HALLC     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
++-----------+-------------------+-------+-------+------------+-------------------+
+
+
++--------------------------------------------------------------------------------+
+; Hold Times                                                                     ;
++-----------+-------------------+-------+-------+------------+-------------------+
+; Data Port ; Clock Port        ; Rise  ; Fall  ; Clock Edge ; Clock Reference   ;
++-----------+-------------------+-------+-------+------------+-------------------+
+; HALLA     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; HALLB     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; HALLC     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
++-----------+-------------------+-------+-------+------------+-------------------+
+
+
++----------------------------------------------------------------------------------+
+; Clock to Output Times                                                            ;
++-----------+-------------------+--------+--------+------------+-------------------+
+; Data Port ; Clock Port        ; Rise   ; Fall   ; Clock Edge ; Clock Reference   ;
++-----------+-------------------+--------+--------+------------+-------------------+
+; PWMAH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMBH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMCH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMAH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMAL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMBH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMBL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMCH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMCL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; TOP_HALL  ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
++-----------+-------------------+--------+--------+------------+-------------------+
+
+
++----------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                    ;
++-----------+-------------------+--------+--------+------------+-------------------+
+; Data Port ; Clock Port        ; Rise   ; Fall   ; Clock Edge ; Clock Reference   ;
++-----------+-------------------+--------+--------+------------+-------------------+
+; PWMAH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMBH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMCH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMAH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMAL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMBH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMBL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMCH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
+; PWMCL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; TOP_HALL  ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
++-----------+-------------------+--------+--------+------------+-------------------+
+
+
++----------------------------------------------------------------+
+; Propagation Delay                                              ;
++--------------+-------------+--------+--------+--------+--------+
+; Input Port   ; Output Port ; RR     ; RF     ; FR     ; FF     ;
++--------------+-------------+--------+--------+--------+--------+
+; BRAKE        ; AD[5]       ; 10.000 ;        ;        ; 10.000 ;
+; DIRECTION    ; AD[3]       ; 10.000 ;        ;        ; 10.000 ;
+; FLTA         ; AD[4]       ; 10.000 ;        ;        ; 10.000 ;
+; HALLA        ; AD[0]       ; 10.000 ;        ;        ; 10.000 ;
+; HALLB        ; AD[1]       ; 10.000 ;        ;        ; 10.000 ;
+; HALLC        ; AD[2]       ; 10.000 ;        ;        ; 10.000 ;
+; Over_current ; AD[6]       ; 10.000 ;        ;        ; 10.000 ;
+; PCS6         ; AD[0]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[1]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[2]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[3]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[4]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[5]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[6]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[7]       ;        ; 10.000 ; 10.000 ;        ;
+; RD_WRn       ; AD[0]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[1]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[2]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[3]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[4]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[5]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[6]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[7]       ; 10.000 ;        ;        ; 10.000 ;
++--------------+-------------+--------+--------+--------+--------+
+
+
++----------------------------------------------------------------+
+; Minimum Propagation Delay                                      ;
++--------------+-------------+--------+--------+--------+--------+
+; Input Port   ; Output Port ; RR     ; RF     ; FR     ; FF     ;
++--------------+-------------+--------+--------+--------+--------+
+; BRAKE        ; AD[5]       ; 10.000 ;        ;        ; 10.000 ;
+; DIRECTION    ; AD[3]       ; 10.000 ;        ;        ; 10.000 ;
+; FLTA         ; AD[4]       ; 10.000 ;        ;        ; 10.000 ;
+; HALLA        ; AD[0]       ; 10.000 ;        ;        ; 10.000 ;
+; HALLB        ; AD[1]       ; 10.000 ;        ;        ; 10.000 ;
+; HALLC        ; AD[2]       ; 10.000 ;        ;        ; 10.000 ;
+; Over_current ; AD[6]       ; 10.000 ;        ;        ; 10.000 ;
+; PCS6         ; AD[0]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[1]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[2]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[3]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[4]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[5]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[6]       ;        ; 16.500 ; 16.500 ;        ;
+; PCS6         ; AD[7]       ;        ; 10.000 ; 10.000 ;        ;
+; RD_WRn       ; AD[0]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[1]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[2]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[3]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[4]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[5]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[6]       ; 16.500 ;        ;        ; 16.500 ;
+; RD_WRn       ; AD[7]       ; 10.000 ;        ;        ; 10.000 ;
++--------------+-------------+--------+--------+--------+--------+
+
+
++-----------------------------------------------------------------------------------+
+; Setup Transfers                                                                   ;
++-------------------+-------------------+----------+----------+----------+----------+
+; From Clock        ; To Clock          ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-------------------+-------------------+----------+----------+----------+----------+
+; H_2_5MHZ          ; H_2_5MHZ          ; 44       ; 0        ; 0        ; 0        ;
+; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 351      ; 0        ; 0        ; 0        ;
++-------------------+-------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+--------------------------------------------------------------------+
-; Hold Transfers                                                     ;
-+------------+-----------+----------+----------+----------+----------+
-; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------+-----------+----------+----------+----------+----------+
-; H_2_5_MHZ  ; H_2_5_MHZ ; 91       ; 0        ; 0        ; 0        ;
-+------------+-----------+----------+----------+----------+----------+
++-----------------------------------------------------------------------------------+
+; Hold Transfers                                                                    ;
++-------------------+-------------------+----------+----------+----------+----------+
+; From Clock        ; To Clock          ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++-------------------+-------------------+----------+----------+----------+----------+
+; H_2_5MHZ          ; H_2_5MHZ          ; 44       ; 0        ; 0        ; 0        ;
+; PWM:inst4|H_10KHZ ; PWM:inst4|H_10KHZ ; 351      ; 0        ; 0        ; 0        ;
++-------------------+-------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -370,10 +694,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 0     ; 0    ;
-; Unconstrained Input Port Paths  ; 0     ; 0    ;
-; Unconstrained Output Ports      ; 1     ; 1    ;
-; Unconstrained Output Port Paths ; 1     ; 1    ;
+; Unconstrained Input Ports       ; 9     ; 9    ;
+; Unconstrained Input Port Paths  ; 26    ; 26   ;
+; Unconstrained Output Ports      ; 15    ; 15   ;
+; Unconstrained Output Port Paths ; 54    ; 54   ;
 +---------------------------------+-------+------+
 
 
@@ -383,7 +707,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Apr 25 17:28:24 2025
+    Info: Processing started: Tue Apr 29 16:53:18 2025
 Info: Command: quartus_sta pld_mbed_etudiant -c pld_mbed_etudiant
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -393,30 +717,34 @@ Warning (335095): TimeQuest Timing Analyzer does not support the analysis of lat
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'pld_mbed_etudiant.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
-    Info (332105): create_clock -period 1.000 -name H_2_5_MHZ H_2_5_MHZ
+    Info (332105): create_clock -period 1.000 -name H_2_5MHZ H_2_5MHZ
+    Info (332105): create_clock -period 1.000 -name PWM:inst4|H_10KHZ PWM:inst4|H_10KHZ
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -9.000
+Info (332146): Worst-case setup slack is -9.800
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -9.000       -81.000 H_2_5_MHZ 
+    Info (332119):    -9.800      -147.200 PWM:inst4|H_10KHZ 
+    Info (332119):    -9.000       -81.000 H_2_5MHZ 
 Info (332146): Worst-case hold slack is 5.000
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):     5.000         0.000 H_2_5_MHZ 
+    Info (332119):     5.000         0.000 H_2_5MHZ 
+    Info (332119):     5.000         0.000 PWM:inst4|H_10KHZ 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.500
     Info (332119):     Slack End Point TNS Clock 
     Info (332119): ========= ============= =====================
-    Info (332119):    -3.500       -63.000 H_2_5_MHZ 
+    Info (332119):    -3.500      -133.000 PWM:inst4|H_10KHZ 
+    Info (332119):    -3.500       -63.000 H_2_5MHZ 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 321 megabytes
-    Info: Processing ended: Fri Apr 25 17:28:26 2025
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 324 megabytes
+    Info: Processing ended: Tue Apr 29 16:53:18 2025
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 
 

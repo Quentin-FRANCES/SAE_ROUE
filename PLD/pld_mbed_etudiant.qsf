@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY MAX7000S
 set_global_assignment -name DEVICE "EPM7064SLC44-10"
-set_global_assignment -name TOP_LEVEL_ENTITY PWM
+set_global_assignment -name TOP_LEVEL_ENTITY matrix_scooter_pwm_mbed_etudiant
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:00:56  SEPTEMBER 07, 2015"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
@@ -101,4 +101,5 @@ set_global_assignment -name QIP_FILE ref_pwm.qip
 set_global_assignment -name VHDL_FILE collecteur_num.vhd
 set_global_assignment -name VHDL_FILE PWM.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE PWM.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "Z:/BUT2/SAE_ROUE/PLD/PWM.vwf"
+set_global_assignment -name VHDL_FILE filtre_hall.vhd
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/fq304107/Documents/SAE_ROUE/PLD/filtre.vwf"

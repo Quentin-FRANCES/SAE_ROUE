@@ -64,44 +64,44 @@ Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage 
 GND+                         : 1         :        :                   :         :           :                
 GND+                         : 2         :        :                   :         :           :                
 VCC                          : 3         : power  :                   :         :           :                
-REF_PWM[1]                   : 4         : input  : TTL               :         :           : N              
-REF_PWM[4]                   : 5         : input  : TTL               :         :           : N              
-REF_PWM[6]                   : 6         : input  : TTL               :         :           : N              
+RESERVED                     : 4         :        :                   :         :           :                
+BRAKE                        : 5         : input  : TTL               :         :           : Y              
+FLTA                         : 6         : input  : TTL               :         :           : Y              
 TDI                          : 7         : input  : TTL               :         :           : N              
-RESERVED                     : 8         :        :                   :         :           :                
-RESERVED                     : 9         :        :                   :         :           :                
+PWMCH                        : 8         : output : TTL               :         :           : Y              
+PWMCL                        : 9         : output : TTL               :         :           : Y              
 GND                          : 10        : gnd    :                   :         :           :                
-PWM_OUT                      : 11        : output : TTL               :         :           : N              
-H_10KHZ                      : 12        : output : TTL               :         :           : N              
+PWMBH                        : 11        : output : TTL               :         :           : Y              
+PWMBL                        : 12        : output : TTL               :         :           : Y              
 TMS                          : 13        : input  : TTL               :         :           : N              
-REF_PWM[5]                   : 14        : input  : TTL               :         :           : N              
+PWMAH                        : 14        : output : TTL               :         :           : Y              
 VCC                          : 15        : power  :                   :         :           :                
-RESERVED                     : 16        :        :                   :         :           :                
-RESERVED                     : 17        :        :                   :         :           :                
-RESERVED                     : 18        :        :                   :         :           :                
-RESERVED                     : 19        :        :                   :         :           :                
-RESERVED                     : 20        :        :                   :         :           :                
-RESERVED                     : 21        :        :                   :         :           :                
+PWMAL                        : 16        : output : TTL               :         :           : Y              
+AD[7]                        : 17        : bidir  : TTL               :         :           : Y              
+AD[6]                        : 18        : bidir  : TTL               :         :           : Y              
+AD[5]                        : 19        : bidir  : TTL               :         :           : Y              
+AD[4]                        : 20        : bidir  : TTL               :         :           : Y              
+AD[3]                        : 21        : bidir  : TTL               :         :           : Y              
 GND                          : 22        : gnd    :                   :         :           :                
 VCC                          : 23        : power  :                   :         :           :                
-RESERVED                     : 24        :        :                   :         :           :                
-RESERVED                     : 25        :        :                   :         :           :                
-RESERVED                     : 26        :        :                   :         :           :                
+AD[2]                        : 24        : bidir  : TTL               :         :           : Y              
+AD[1]                        : 25        : bidir  : TTL               :         :           : Y              
+AD[0]                        : 26        : bidir  : TTL               :         :           : Y              
 RESERVED                     : 27        :        :                   :         :           :                
-RESERVED                     : 28        :        :                   :         :           :                
-REF_PWM[8]                   : 29        : input  : TTL               :         :           : N              
+PCS6                         : 28        : input  : TTL               :         :           : Y              
+RD_WRn                       : 29        : input  : TTL               :         :           : Y              
 GND                          : 30        : gnd    :                   :         :           :                
-REF_PWM[3]                   : 31        : input  : TTL               :         :           : N              
+TOP_HALL                     : 31        : output : TTL               :         :           : Y              
 TCK                          : 32        : input  : TTL               :         :           : N              
-VALID_PWM                    : 33        : input  : TTL               :         :           : Y              
+valid_pwm                    : 33        : input  : TTL               :         :           : Y              
 RESERVED                     : 34        :        :                   :         :           :                
 VCC                          : 35        : power  :                   :         :           :                
-RESERVED                     : 36        :        :                   :         :           :                
-RESERVED                     : 37        :        :                   :         :           :                
+DIRECTION                    : 36        : input  : TTL               :         :           : Y              
+Over_current                 : 37        : input  : TTL               :         :           : Y              
 TDO                          : 38        : output : TTL               :         :           : N              
-REF_PWM[7]                   : 39        : input  : TTL               :         :           : N              
-REF_PWM[2]                   : 40        : input  : TTL               :         :           : N              
-REF_PWM[0]                   : 41        : input  : TTL               :         :           : N              
+HALLA                        : 39        : input  : TTL               :         :           : Y              
+HALLB                        : 40        : input  : TTL               :         :           : Y              
+HALLC                        : 41        : input  : TTL               :         :           : Y              
 GND                          : 42        : gnd    :                   :         :           :                
-H_2_5_MHZ                    : 43        : input  : TTL               :         :           : N              
+H_2_5MHZ                     : 43        : input  : TTL               :         :           : Y              
 GND+                         : 44        :        :                   :         :           :                
