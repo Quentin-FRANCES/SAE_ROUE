@@ -1,0 +1,3 @@
+Dans le word sur data_out : p24 (MSB) -> P5(LSB)
+		Différent dans le code. Donc ???
+
