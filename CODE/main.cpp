@@ -35,6 +35,7 @@ DigitalOut led1(LED1); //initialisation des Leds présentes sur le micro-control
 DigitalOut led2(LED2);
 DigitalOut led3(LED3); // blink when can message is sent
 DigitalOut led4(LED4); // blink when can message is received 
+DigitalOut VALID_PWM(p21); //broche du VALID_PWM sur le PLD ; Actif à 1
 
 //************ local function prototypes *******************
 
@@ -118,9 +119,28 @@ int main() {
     pc.scanf(" %c",&cChoix);
     switch (cChoix){
         case 'a': 
-        break;
-        case 'q': 
-        break;
+            break;
+        case 'q':
+            VALID_PWM.write(0); 
+            break;
+        case '8':
+            int duty_cycle;
+            pc.printf("\n\rEntrez la valeur du rapport cyclique :");
+            pc.scanf("%d", &duty_cycle);
+            if(duty_cycle >= 0 && duty_cycle <= 100){
+                //////////////////////////
+                /// FAIRE LA CONVERTION///
+                //////////////////////////
+                MyPLD.write(duty_cycle);
+                pc.printf("\n\rPWM mis à jour à : %d", duty_cycle);
+                VALID_PWM.write(1);
+            }
+            else{
+                pc.printf("\n\rERROR : La valeur rentree ne correspond pas au valeurs attendues.");
+                VALID_PWM.write(0);
+            }
+            break;
+        
         }
     } // end while
     
