@@ -26,4 +26,8 @@ Type  : Minimum Pulse Width 'H_2_5MHZ'
 Slack : -3.500
 TNS   : -63.000
 
+Type  : Minimum Pulse Width 'PCS6'
+Slack : -3.500
+TNS   : -56.000
+
 ------------------------------------------------------------

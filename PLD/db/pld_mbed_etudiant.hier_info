@@ -1,20 +1,9 @@
-|matrix_scooter_pwm_mbed_etudiant
+|matrix_scooter_pwm_mbed_etudiant_mbed
 PWMCH <= collecteur_num:inst3.PWM_CH
 H_2_5MHZ => PWM:inst4.H_2_5_MHZ
-HALLA => filtre_hall:inst5.hall_A
-HALLA => bloc_io_mbed:inst.DATA_IN[0]
-HALLB => filtre_hall:inst5.hall_B
-HALLB => bloc_io_mbed:inst.DATA_IN[1]
-HALLC => filtre_hall:inst5.hall_C
-HALLC => bloc_io_mbed:inst.DATA_IN[2]
-DIRECTION => collecteur_num:inst3.DIR
-DIRECTION => bloc_io_mbed:inst.DATA_IN[3]
-PWMBL <= collecteur_num:inst3.PWM_BL
-PWMBH <= collecteur_num:inst3.PWM_BH
-PWMCL <= collecteur_num:inst3.PWM_CL
-PWMAH <= collecteur_num:inst3.PWM_AH
-PWMAL <= collecteur_num:inst3.PWM_AL
-TOP_HALL <= valid_hall.DB_MAX_OUTPUT_PORT_TYPE
+valid_pwm => PWM:inst4.VALID_PWM
+RD_WRn => bloc_io_mbed:inst.RD_WRn
+PCS6 => bloc_io_mbed:inst.PCS6
 AD[0] <> bloc_io_mbed:inst.AD[0]
 AD[1] <> bloc_io_mbed:inst.AD[1]
 AD[2] <> bloc_io_mbed:inst.AD[2]
@@ -23,15 +12,26 @@ AD[4] <> bloc_io_mbed:inst.AD[4]
 AD[5] <> bloc_io_mbed:inst.AD[5]
 AD[6] <> bloc_io_mbed:inst.AD[6]
 AD[7] <> bloc_io_mbed:inst.AD[7]
-RD_WRn => bloc_io_mbed:inst.RD_WRn
-PCS6 => bloc_io_mbed:inst.PCS6
+HALLA => filtre_hall:inst5.hall_A
+HALLA => bloc_io_mbed:inst.DATA_IN[0]
+HALLB => filtre_hall:inst5.hall_B
+HALLB => bloc_io_mbed:inst.DATA_IN[1]
+HALLC => filtre_hall:inst5.hall_C
+HALLC => bloc_io_mbed:inst.DATA_IN[2]
 FLTA => bloc_io_mbed:inst.DATA_IN[4]
+DIRECTION => collecteur_num:inst3.DIR
+DIRECTION => bloc_io_mbed:inst.DATA_IN[3]
 BRAKE => bloc_io_mbed:inst.DATA_IN[5]
 Over_current => bloc_io_mbed:inst.DATA_IN[6]
-valid_pwm => ~NO_FANOUT~
+PWMBL <= collecteur_num:inst3.PWM_BL
+PWMBH <= collecteur_num:inst3.PWM_BH
+PWMCL <= collecteur_num:inst3.PWM_CL
+PWMAH <= collecteur_num:inst3.PWM_AH
+PWMAL <= collecteur_num:inst3.PWM_AL
+TOP_HALL <= valid_hall.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|matrix_scooter_pwm_mbed_etudiant|collecteur_num:inst3
+|matrix_scooter_pwm_mbed_etudiant_mbed|collecteur_num:inst3
 H_10KHZ => Command[0].CLK
 H_10KHZ => Command[1].CLK
 H_10KHZ => Command[2].CLK
@@ -68,7 +68,7 @@ PWM_CH <= PWM_CH.DB_MAX_OUTPUT_PORT_TYPE
 PWM_CL <= Command[0].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|matrix_scooter_pwm_mbed_etudiant|PWM:inst4
+|matrix_scooter_pwm_mbed_etudiant_mbed|PWM:inst4
 H_2_5_MHZ => H_10KHZ~reg0.CLK
 H_2_5_MHZ => CPT_CLK[0].CLK
 H_2_5_MHZ => CPT_CLK[1].CLK
@@ -91,52 +91,7 @@ H_10KHZ <= H_10KHZ~reg0.DB_MAX_OUTPUT_PORT_TYPE
 PWM_OUT <= PWM_OUT.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|matrix_scooter_pwm_mbed_etudiant|ref_pwm:inst6
-result[0] <= lpm_constant:LPM_CONSTANT_component.result[0]
-result[1] <= lpm_constant:LPM_CONSTANT_component.result[1]
-result[2] <= lpm_constant:LPM_CONSTANT_component.result[2]
-result[3] <= lpm_constant:LPM_CONSTANT_component.result[3]
-result[4] <= lpm_constant:LPM_CONSTANT_component.result[4]
-result[5] <= lpm_constant:LPM_CONSTANT_component.result[5]
-result[6] <= lpm_constant:LPM_CONSTANT_component.result[6]
-result[7] <= lpm_constant:LPM_CONSTANT_component.result[7]
-
-
-|matrix_scooter_pwm_mbed_etudiant|ref_pwm:inst6|lpm_constant:LPM_CONSTANT_component
-result[0] <= <VCC>
-result[1] <= <VCC>
-result[2] <= <VCC>
-result[3] <= <VCC>
-result[4] <= <VCC>
-result[5] <= <VCC>
-result[6] <= <VCC>
-result[7] <= <GND>
-
-
-|matrix_scooter_pwm_mbed_etudiant|filtre_hall:inst5
-hall_A => N[0].DATAIN
-hall_B => N[1].DATAIN
-hall_C => N[2].DATAIN
-H_10khz => hall_filtre[0]~reg0.CLK
-H_10khz => hall_filtre[1]~reg0.CLK
-H_10khz => hall_filtre[2]~reg0.CLK
-H_10khz => valid_hall~reg0.CLK
-H_10khz => N[0].CLK
-H_10khz => N[1].CLK
-H_10khz => N[2].CLK
-H_10khz => N_2[0].CLK
-H_10khz => N_2[1].CLK
-H_10khz => N_2[2].CLK
-H_10khz => N_3[0].CLK
-H_10khz => N_3[1].CLK
-H_10khz => N_3[2].CLK
-valid_hall <= valid_hall~reg0.DB_MAX_OUTPUT_PORT_TYPE
-hall_filtre[0] <= hall_filtre[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-hall_filtre[1] <= hall_filtre[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-hall_filtre[2] <= hall_filtre[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|matrix_scooter_pwm_mbed_etudiant|bloc_io_mbed:inst
+|matrix_scooter_pwm_mbed_etudiant_mbed|bloc_io_mbed:inst
 AD[0] <> AD[0]
 AD[1] <> AD[1]
 AD[2] <> AD[2]
@@ -165,5 +120,28 @@ DATA_IN[4] => AD[4].DATAIN
 DATA_IN[5] => AD[5].DATAIN
 DATA_IN[6] => AD[6].DATAIN
 DATA_IN[7] => AD[7].DATAIN
+
+
+|matrix_scooter_pwm_mbed_etudiant_mbed|filtre_hall:inst5
+hall_A => N[0].DATAIN
+hall_B => N[1].DATAIN
+hall_C => N[2].DATAIN
+H_10khz => hall_filtre[0]~reg0.CLK
+H_10khz => hall_filtre[1]~reg0.CLK
+H_10khz => hall_filtre[2]~reg0.CLK
+H_10khz => valid_hall~reg0.CLK
+H_10khz => N[0].CLK
+H_10khz => N[1].CLK
+H_10khz => N[2].CLK
+H_10khz => N_2[0].CLK
+H_10khz => N_2[1].CLK
+H_10khz => N_2[2].CLK
+H_10khz => N_3[0].CLK
+H_10khz => N_3[1].CLK
+H_10khz => N_3[2].CLK
+valid_hall <= valid_hall~reg0.DB_MAX_OUTPUT_PORT_TYPE
+hall_filtre[0] <= hall_filtre[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+hall_filtre[1] <= hall_filtre[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+hall_filtre[2] <= hall_filtre[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for pld_mbed_etudiant
-Tue Apr 29 16:53:18 2025
+Tue May 06 14:30:21 2025
 Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -22,18 +22,23 @@ Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  14. Hold: 'PWM:inst4|H_10KHZ'
  15. Minimum Pulse Width: 'PWM:inst4|H_10KHZ'
  16. Minimum Pulse Width: 'H_2_5MHZ'
- 17. Setup Times
- 18. Hold Times
- 19. Clock to Output Times
- 20. Minimum Clock to Output Times
- 21. Propagation Delay
- 22. Minimum Propagation Delay
- 23. Setup Transfers
- 24. Hold Transfers
- 25. Report TCCS
- 26. Report RSKM
- 27. Unconstrained Paths
- 28. TimeQuest Timing Analyzer Messages
+ 17. Minimum Pulse Width: 'PCS6'
+ 18. Setup Times
+ 19. Hold Times
+ 20. Clock to Output Times
+ 21. Minimum Clock to Output Times
+ 22. Propagation Delay
+ 23. Minimum Propagation Delay
+ 24. Output Enable Times
+ 25. Minimum Output Enable Times
+ 26. Output Disable Times
+ 27. Minimum Output Disable Times
+ 28. Setup Transfers
+ 29. Hold Transfers
+ 30. Report TCCS
+ 31. Report RSKM
+ 32. Unconstrained Paths
+ 33. TimeQuest Timing Analyzer Messages
 
 
 
@@ -86,6 +91,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Clock Name        ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets               ;
 +-------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------+
 ; H_2_5MHZ          ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { H_2_5MHZ }          ;
+; PCS6              ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { PCS6 }              ;
 ; PWM:inst4|H_10KHZ ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { PWM:inst4|H_10KHZ } ;
 +-------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------------------+
 
@@ -140,6 +146,7 @@ No paths to report.
 +-------------------+--------+---------------+
 ; PWM:inst4|H_10KHZ ; -3.500 ; -133.000      ;
 ; H_2_5MHZ          ; -3.500 ; -63.000       ;
+; PCS6              ; -3.500 ; -56.000       ;
 +-------------------+--------+---------------+
 
 
@@ -533,15 +540,70 @@ No paths to report.
 +--------+--------------+----------------+------------------+----------+------------+---------------------------------------------+
 
 
-+--------------------------------------------------------------------------------+
-; Setup Times                                                                    ;
-+-----------+-------------------+-------+-------+------------+-------------------+
-; Data Port ; Clock Port        ; Rise  ; Fall  ; Clock Edge ; Clock Reference   ;
-+-----------+-------------------+-------+-------+------------+-------------------+
-; HALLA     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
-; HALLB     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
-; HALLC     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
-+-----------+-------------------+-------+-------+------------+-------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'PCS6'                                                                                    ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                        ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------+
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[0] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[0] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[1] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[1] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[2] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[2] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[3] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[3] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[4] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[4] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[5] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[5] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[6] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[6] ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[7] ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; PCS6  ; Rise       ; bloc_io_mbed:inst|DATA_OUT[7] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Rise       ; PCS6|dataout                  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Rise       ; PCS6|dataout                  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[0]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[0]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[1]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[1]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[2]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[2]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[3]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[3]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[4]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[4]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[5]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[5]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[6]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[6]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|DATA_OUT[7]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|DATA_OUT[7]|[1]          ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Rise       ; inst|WR_INT~7|datain[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Rise       ; inst|WR_INT~7|datain[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; PCS6  ; Fall       ; inst|WR_INT~7|dataout         ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; PCS6  ; Fall       ; inst|WR_INT~7|dataout         ;
++--------+--------------+----------------+------------------+-------+------------+-------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Setup Times                                                                      ;
++-----------+-------------------+--------+--------+------------+-------------------+
+; Data Port ; Clock Port        ; Rise   ; Fall   ; Clock Edge ; Clock Reference   ;
++-----------+-------------------+--------+--------+------------+-------------------+
+; AD[*]     ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[0]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[1]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[2]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[3]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[4]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[5]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[6]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+;  AD[7]    ; PCS6              ; -3.000 ; -3.000 ; Rise       ; PCS6              ;
+; HALLA     ; PWM:inst4|H_10KHZ ; 2.500  ; 2.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; HALLB     ; PWM:inst4|H_10KHZ ; 2.500  ; 2.500  ; Rise       ; PWM:inst4|H_10KHZ ;
+; HALLC     ; PWM:inst4|H_10KHZ ; 2.500  ; 2.500  ; Rise       ; PWM:inst4|H_10KHZ ;
++-----------+-------------------+--------+--------+------------+-------------------+
 
 
 +--------------------------------------------------------------------------------+
@@ -549,6 +611,15 @@ No paths to report.
 +-----------+-------------------+-------+-------+------------+-------------------+
 ; Data Port ; Clock Port        ; Rise  ; Fall  ; Clock Edge ; Clock Reference   ;
 +-----------+-------------------+-------+-------+------------+-------------------+
+; AD[*]     ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[0]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[1]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[2]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[3]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[4]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[5]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[6]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
+;  AD[7]    ; PCS6              ; 8.000 ; 8.000 ; Rise       ; PCS6              ;
 ; HALLA     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
 ; HALLB     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
 ; HALLC     ; PWM:inst4|H_10KHZ ; 2.500 ; 2.500 ; Rise       ; PWM:inst4|H_10KHZ ;
@@ -560,9 +631,16 @@ No paths to report.
 +-----------+-------------------+--------+--------+------------+-------------------+
 ; Data Port ; Clock Port        ; Rise   ; Fall   ; Clock Edge ; Clock Reference   ;
 +-----------+-------------------+--------+--------+------------+-------------------+
-; PWMAH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
-; PWMBH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
-; PWMCH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; PWMAH     ; H_2_5MHZ          ; 26.000 ; 26.000 ; Rise       ; H_2_5MHZ          ;
+; PWMBH     ; H_2_5MHZ          ; 26.000 ; 26.000 ; Rise       ; H_2_5MHZ          ;
+; PWMCH     ; H_2_5MHZ          ; 26.000 ; 26.000 ; Rise       ; H_2_5MHZ          ;
+; AD[*]     ; PCS6              ; 10.000 ; 10.000 ; Rise       ; PCS6              ;
+;  AD[7]    ; PCS6              ; 10.000 ; 10.000 ; Rise       ; PCS6              ;
+; PWMAH     ; PCS6              ; 36.000 ; 36.000 ; Rise       ; PCS6              ;
+; PWMBH     ; PCS6              ; 36.000 ; 36.000 ; Rise       ; PCS6              ;
+; PWMCH     ; PCS6              ; 36.000 ; 36.000 ; Rise       ; PCS6              ;
+; AD[*]     ; PCS6              ; 10.000 ; 10.000 ; Fall       ; PCS6              ;
+;  AD[7]    ; PCS6              ; 10.000 ; 10.000 ; Fall       ; PCS6              ;
 ; PWMAH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
 ; PWMAL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
 ; PWMBH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
@@ -581,6 +659,13 @@ No paths to report.
 ; PWMAH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
 ; PWMBH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
 ; PWMCH     ; H_2_5MHZ          ; 13.000 ; 13.000 ; Rise       ; H_2_5MHZ          ;
+; AD[*]     ; PCS6              ; 10.000 ; 10.000 ; Rise       ; PCS6              ;
+;  AD[7]    ; PCS6              ; 10.000 ; 10.000 ; Rise       ; PCS6              ;
+; PWMAH     ; PCS6              ; 23.000 ; 23.000 ; Rise       ; PCS6              ;
+; PWMBH     ; PCS6              ; 23.000 ; 23.000 ; Rise       ; PCS6              ;
+; PWMCH     ; PCS6              ; 23.000 ; 23.000 ; Rise       ; PCS6              ;
+; AD[*]     ; PCS6              ; 10.000 ; 10.000 ; Fall       ; PCS6              ;
+;  AD[7]    ; PCS6              ; 10.000 ; 10.000 ; Fall       ; PCS6              ;
 ; PWMAH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
 ; PWMAL     ; PWM:inst4|H_10KHZ ; 9.500  ; 9.500  ; Rise       ; PWM:inst4|H_10KHZ ;
 ; PWMBH     ; PWM:inst4|H_10KHZ ; 17.500 ; 17.500 ; Rise       ; PWM:inst4|H_10KHZ ;
@@ -591,66 +676,152 @@ No paths to report.
 +-----------+-------------------+--------+--------+------------+-------------------+
 
 
-+----------------------------------------------------------------+
-; Propagation Delay                                              ;
-+--------------+-------------+--------+--------+--------+--------+
-; Input Port   ; Output Port ; RR     ; RF     ; FR     ; FF     ;
-+--------------+-------------+--------+--------+--------+--------+
-; BRAKE        ; AD[5]       ; 10.000 ;        ;        ; 10.000 ;
-; DIRECTION    ; AD[3]       ; 10.000 ;        ;        ; 10.000 ;
-; FLTA         ; AD[4]       ; 10.000 ;        ;        ; 10.000 ;
-; HALLA        ; AD[0]       ; 10.000 ;        ;        ; 10.000 ;
-; HALLB        ; AD[1]       ; 10.000 ;        ;        ; 10.000 ;
-; HALLC        ; AD[2]       ; 10.000 ;        ;        ; 10.000 ;
-; Over_current ; AD[6]       ; 10.000 ;        ;        ; 10.000 ;
-; PCS6         ; AD[0]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[1]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[2]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[3]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[4]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[5]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[6]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[7]       ;        ; 10.000 ; 10.000 ;        ;
-; RD_WRn       ; AD[0]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[1]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[2]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[3]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[4]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[5]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[6]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[7]       ; 10.000 ;        ;        ; 10.000 ;
-+--------------+-------------+--------+--------+--------+--------+
++--------------------------------------------------------+
+; Propagation Delay                                      ;
++--------------+-------------+--------+----+----+--------+
+; Input Port   ; Output Port ; RR     ; RF ; FR ; FF     ;
++--------------+-------------+--------+----+----+--------+
+; BRAKE        ; AD[5]       ; 10.000 ;    ;    ; 10.000 ;
+; DIRECTION    ; AD[3]       ; 10.000 ;    ;    ; 10.000 ;
+; FLTA         ; AD[4]       ; 10.000 ;    ;    ; 10.000 ;
+; HALLA        ; AD[0]       ; 10.000 ;    ;    ; 10.000 ;
+; HALLB        ; AD[1]       ; 10.000 ;    ;    ; 10.000 ;
+; HALLC        ; AD[2]       ; 10.000 ;    ;    ; 10.000 ;
+; Over_current ; AD[6]       ; 10.000 ;    ;    ; 10.000 ;
+; RD_WRn       ; AD[0]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[1]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[2]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[3]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[4]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[5]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[6]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[7]       ; 10.000 ;    ;    ; 10.000 ;
+; valid_pwm    ; PWMAH       ; 10.000 ;    ;    ; 10.000 ;
+; valid_pwm    ; PWMBH       ; 10.000 ;    ;    ; 10.000 ;
+; valid_pwm    ; PWMCH       ; 10.000 ;    ;    ; 10.000 ;
++--------------+-------------+--------+----+----+--------+
 
 
-+----------------------------------------------------------------+
-; Minimum Propagation Delay                                      ;
-+--------------+-------------+--------+--------+--------+--------+
-; Input Port   ; Output Port ; RR     ; RF     ; FR     ; FF     ;
-+--------------+-------------+--------+--------+--------+--------+
-; BRAKE        ; AD[5]       ; 10.000 ;        ;        ; 10.000 ;
-; DIRECTION    ; AD[3]       ; 10.000 ;        ;        ; 10.000 ;
-; FLTA         ; AD[4]       ; 10.000 ;        ;        ; 10.000 ;
-; HALLA        ; AD[0]       ; 10.000 ;        ;        ; 10.000 ;
-; HALLB        ; AD[1]       ; 10.000 ;        ;        ; 10.000 ;
-; HALLC        ; AD[2]       ; 10.000 ;        ;        ; 10.000 ;
-; Over_current ; AD[6]       ; 10.000 ;        ;        ; 10.000 ;
-; PCS6         ; AD[0]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[1]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[2]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[3]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[4]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[5]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[6]       ;        ; 16.500 ; 16.500 ;        ;
-; PCS6         ; AD[7]       ;        ; 10.000 ; 10.000 ;        ;
-; RD_WRn       ; AD[0]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[1]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[2]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[3]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[4]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[5]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[6]       ; 16.500 ;        ;        ; 16.500 ;
-; RD_WRn       ; AD[7]       ; 10.000 ;        ;        ; 10.000 ;
-+--------------+-------------+--------+--------+--------+--------+
++--------------------------------------------------------+
+; Minimum Propagation Delay                              ;
++--------------+-------------+--------+----+----+--------+
+; Input Port   ; Output Port ; RR     ; RF ; FR ; FF     ;
++--------------+-------------+--------+----+----+--------+
+; BRAKE        ; AD[5]       ; 10.000 ;    ;    ; 10.000 ;
+; DIRECTION    ; AD[3]       ; 10.000 ;    ;    ; 10.000 ;
+; FLTA         ; AD[4]       ; 10.000 ;    ;    ; 10.000 ;
+; HALLA        ; AD[0]       ; 10.000 ;    ;    ; 10.000 ;
+; HALLB        ; AD[1]       ; 10.000 ;    ;    ; 10.000 ;
+; HALLC        ; AD[2]       ; 10.000 ;    ;    ; 10.000 ;
+; Over_current ; AD[6]       ; 10.000 ;    ;    ; 10.000 ;
+; RD_WRn       ; AD[0]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[1]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[2]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[3]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[4]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[5]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[6]       ; 16.500 ;    ;    ; 16.500 ;
+; RD_WRn       ; AD[7]       ; 10.000 ;    ;    ; 10.000 ;
+; valid_pwm    ; PWMAH       ; 10.000 ;    ;    ; 10.000 ;
+; valid_pwm    ; PWMBH       ; 10.000 ;    ;    ; 10.000 ;
+; valid_pwm    ; PWMCH       ; 10.000 ;    ;    ; 10.000 ;
++--------------+-------------+--------+----+----+--------+
+
+
++-----------------------------------------------------------------------+
+; Output Enable Times                                                   ;
++-----------+------------+--------+------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+------+------------+-----------------+
+; AD[*]     ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+; AD[*]     ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
++-----------+------------+--------+------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Output Enable Times                                           ;
++-----------+------------+--------+------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+------+------------+-----------------+
+; AD[*]     ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500 ;      ; Rise       ; PCS6            ;
+; AD[*]     ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500 ;      ; Fall       ; PCS6            ;
++-----------+------------+--------+------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Output Disable Times                                                          ;
++-----------+------------+-----------+-----------+------------+-----------------+
+; Data Port ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-----------+------------+-----------+-----------+------------+-----------------+
+; AD[*]     ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+; AD[*]     ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
++-----------+------------+-----------+-----------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Minimum Output Disable Times                                                  ;
++-----------+------------+-----------+-----------+------------+-----------------+
+; Data Port ; Clock Port ; 0 to Hi-Z ; 1 to Hi-Z ; Clock Edge ; Clock Reference ;
++-----------+------------+-----------+-----------+------------+-----------------+
+; AD[*]     ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500    ;           ; Rise       ; PCS6            ;
+; AD[*]     ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[0]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[1]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[2]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[3]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[4]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[5]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
+;  AD[6]    ; PCS6       ; 16.500    ;           ; Fall       ; PCS6            ;
++-----------+------------+-----------+-----------+------------+-----------------+
 
 
 +-----------------------------------------------------------------------------------+
@@ -694,10 +865,10 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 9     ; 9    ;
-; Unconstrained Input Port Paths  ; 26    ; 26   ;
+; Unconstrained Input Ports       ; 18    ; 18   ;
+; Unconstrained Input Port Paths  ; 37    ; 37   ;
 ; Unconstrained Output Ports      ; 15    ; 15   ;
-; Unconstrained Output Port Paths ; 54    ; 54   ;
+; Unconstrained Output Port Paths ; 81    ; 81   ;
 +---------------------------------+-------+------+
 
 
@@ -707,7 +878,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Apr 29 16:53:18 2025
+    Info: Processing started: Tue May 06 14:30:20 2025
 Info: Command: quartus_sta pld_mbed_etudiant -c pld_mbed_etudiant
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -718,6 +889,7 @@ Critical Warning (332012): Synopsys Design Constraints File file not found: 'pld
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name H_2_5MHZ H_2_5MHZ
+    Info (332105): create_clock -period 1.000 -name PCS6 PCS6
     Info (332105): create_clock -period 1.000 -name PWM:inst4|H_10KHZ PWM:inst4|H_10KHZ
 Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Critical Warning (332148): Timing requirements not met
@@ -738,13 +910,14 @@ Info (332146): Worst-case minimum pulse width slack is -3.500
     Info (332119): ========= ============= =====================
     Info (332119):    -3.500      -133.000 PWM:inst4|H_10KHZ 
     Info (332119):    -3.500       -63.000 H_2_5MHZ 
+    Info (332119):    -3.500       -56.000 PCS6 
 Info (332001): The selected device family is not supported by the report_metastability command.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 324 megabytes
-    Info: Processing ended: Tue Apr 29 16:53:18 2025
-    Info: Elapsed time: 00:00:00
+    Info: Peak virtual memory: 325 megabytes
+    Info: Processing ended: Tue May 06 14:30:21 2025
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 

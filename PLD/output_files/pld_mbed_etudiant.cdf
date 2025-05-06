@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EPM7064SL44) Path("C:/Users/fq304107/Documents/SAE_ROUE/PLD/output_files/") File("pld_mbed_etudiant.pof") MfrSpec(OpMask(1));
+		Device PartName(EPM7064SL44) Path("Z:/BUT2/SAE_ROUE/PLD/output_files/") File("pld_mbed_etudiant.pof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
